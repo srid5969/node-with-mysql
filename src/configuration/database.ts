@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import mysql from "mysql";
+import { CREATE_USERS_TABLE_QUERY } from "resources/query/user/user";
 import { promisify } from "util";
 
 if (dotenv.config().error) throw Error("Cannot find ");
@@ -15,7 +16,7 @@ connection.connect(async function (err) {
     console.error("error connecting: " + err.stack);
     return;
   }
-  await query("CREATE TABLE IF NOT exists users (id INT PRIMARY KEY AUTO_INCREMENT,name VARCHAR(50),age INT)");
+  await query(CREATE_USERS_TABLE_QUERY);
 
   console.log("connected as id " + connection.threadId);
 });
