@@ -6,8 +6,8 @@ let router: Express = require("express").Router();
 
 router.post("/users", validate(User, ["signUp"]), saveUser);
 router.get("/users", listAllUsers);
-router.get("/users", editUser);
-router.get("/users", deleteUserController);
-router.get("/users", getUserByIdController);
+router.get("/users/:id", editUser);
+router.get("/users/:id", deleteUserController);
+router.get("/users/:id", getUserByIdController);
 
 export { router as userRouter };

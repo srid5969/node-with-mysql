@@ -11,17 +11,21 @@ export async function saveUser(data: User) {
   return await request.query(insertUser).catch((e) => e);
 }
 export async function listUsers(): Promise<any> {
-  return await query(getAllUsers);
+  return await query(getAllUsers).catch((e) => e);
 }
 export async function editUserName(id: string, data: User): Promise<any> {
   const request = new sql.Request();
   request.input("name", sql.VarChar, data.name);
-  // request.input("password", sql.VarChar, data.password);
-  return await request.query(editUserQuery).catch((e) => e);
+  request.input("id", sql.VarChar, id);
+  return await request
+    .query(editUserQuery)
+    .catch((e) => e)
 }
 export async function deleteUser(id: string): Promise<any> {
-  return await query(deleteUserQuery + ` where id=${id}`);
+  return await query(deleteUserQuery + `${id}`).catch((e) => e);
 }
 export async function getUserById(id: string): Promise<any> {
-  return await query(getUserByIdQuery + ` where id=${id}`);
+  const request = new sql.Request();
+  request.input("id", sql.VarChar, id);
+  return await request.query(getUserByIdQuery).catch((e) => e);
 }
