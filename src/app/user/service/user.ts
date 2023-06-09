@@ -17,12 +17,12 @@ export async function editUserName(id: string, data: User): Promise<any> {
   const request = new sql.Request();
   request.input("name", sql.VarChar, data.name);
   request.input("id", sql.VarChar, id);
-  return await request
-    .query(editUserQuery)
-    .catch((e) => e)
+  return await request.query(editUserQuery).catch((e) => e);
 }
 export async function deleteUser(id: string): Promise<any> {
-  return await query(deleteUserQuery + `${id}`).catch((e) => e);
+  const request = new sql.Request();
+  request.input("id", sql.VarChar, id);
+  return await request.query(deleteUserQuery).catch((e) => e);
 }
 export async function getUserById(id: string): Promise<any> {
   const request = new sql.Request();
