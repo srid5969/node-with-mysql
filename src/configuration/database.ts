@@ -8,18 +8,17 @@ import { DataSource } from "typeorm";
 if (dotenv.config().error) throw Error("Cannot find ");
 const configuration: any = {
   type: "mssql",
-  host: "localhost",
+  host:  process.env.MSSQL_SERVER,
   port: 1433,
   username: process.env.MSSQL_USERNAME || "",
   password: process.env.MSSQL_PASSWORD || "",
   database: process.env.MSSQL_DATABASE || "",
   extra: {
-    trustServerCertificate: true, 
+    trustServerCertificate: true,
   },
-
-  synchronize: true, 
+  synchronize: true,
   logging: true,
-  entities: [User,SystemLanguage,SystemCountry,SystemState],
+  entities: [User, SystemLanguage, SystemCountry, SystemState],
   subscribers: [],
   migrations: [],
 };

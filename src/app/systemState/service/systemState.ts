@@ -14,9 +14,11 @@ export async function getSystemStateById(id: string) {
 }
 export async function updateSystemStateById(id: string, data: SystemState): Promise<any> {
   systemStateRepository.createQueryBuilder();
-  let state: any = await systemStateRepository.findOneBy({
-    id: id,
-  });
+  let state: any = await systemStateRepository
+    .findOneBy({
+      id: id,
+    })
+    .catch((e) => e);
 
   state.name = await data.name;
   !!data.log ? (state.log = data.log) : null;

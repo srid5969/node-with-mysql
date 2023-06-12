@@ -7,6 +7,8 @@ import dotenv from "dotenv";
 import express, { Application } from "express";
 import morgan from "morgan";
 import systemLanguage from "app/systemLanguage/router/systemLanguage";
+import systemCountry from "app/systemCountry/router/systemCountry";
+import systemState from "app/systemState/router/systemState";
 
 export const main = async (app: Application): Promise<void> => {
   if (dotenv.config().error) throw Error("Cannot find dot env file");
@@ -25,6 +27,8 @@ export const main = async (app: Application): Promise<void> => {
   }
   app.use(baseUrl, userRouter);
   app.use(baseUrl, systemLanguage);
+  app.use(baseUrl, systemCountry);
+  app.use(baseUrl, systemState);
   app.use(middleware);
   app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
