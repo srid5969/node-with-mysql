@@ -1,7 +1,6 @@
 import { userRouter } from "app/user/router/user";
 import bodyParser from "body-parser";
 import { middleware } from "common/ErrorHandler/afterMiddleWare";
-import { sequelize } from "configuration/database";
 import cors from "cors";
 import dotenv from "dotenv";
 import express, { Application } from "express";
