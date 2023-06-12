@@ -9,19 +9,20 @@ export async function listUsers(): Promise<any> {
   return await userRepository.find().catch((e) => e);
 }
 export async function editUserName(id: string, data: User): Promise<any> {
-  let user: any =await userRepository.findOneBy({
+  let user: any = await userRepository.findOneBy({
     id: Number(id),
   });
-  
-  user.name =await data.name;
-  console.log(user,'==========================================');
+
+  user.name = await data.name;
   return await userRepository.save(user).catch((e) => e);
 }
 export async function deleteUser(id: string): Promise<any> {
   return await userRepository.delete({ id: Number(id) }).catch((e) => e);
 }
 export async function getUserById(id: string): Promise<any> {
-  return await userRepository.findOneBy({
-    id: Number(id),
-  });
+  return await userRepository
+    .findOneBy({
+      id: Number(id),
+    })
+    .catch((e) => e);
 }
