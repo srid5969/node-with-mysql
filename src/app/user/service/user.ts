@@ -11,10 +11,10 @@ export async function listUsers(): Promise<any> {
   return await userRepository.find().catch((e) => e);
 }
 export async function editUserName(id: string, data: User): Promise<any> {
-  const user:any=userRepository.findOneBy({
-    id: Number(id),
+  const user: any = userRepository.findOneBy({
+    id: Number(id)
   });
-  user.name=''
+  user.name = "";
   return await userRepository.save(data).catch((e) => e);
 }
 export async function deleteUser(id: string): Promise<any> {
