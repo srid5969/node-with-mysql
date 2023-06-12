@@ -1,3 +1,6 @@
+import { SystemCountry } from "app/systemCountry/model/systemCountry";
+import { SystemLanguage } from "app/systemLanguage/model/systemLanguage";
+import { SystemState } from "app/systemState/model/systemState";
 import { User } from "app/user/model/user";
 import dotenv from "dotenv";
 import { DataSource } from "typeorm";
@@ -5,7 +8,7 @@ import { DataSource } from "typeorm";
 if (dotenv.config().error) throw Error("Cannot find ");
 const configuration: any = {
   type: "mssql",
-  host: "localhost",
+  host:  process.env.MSSQL_SERVER,
   port: 1433,
   username: process.env.MSSQL_USERNAME || "",
   password: process.env.MSSQL_PASSWORD || "",
@@ -13,10 +16,9 @@ const configuration: any = {
   extra: {
     trustServerCertificate: true,
   },
-
   synchronize: true,
   logging: true,
-  entities: [User],
+  entities: [User, SystemLanguage, SystemCountry, SystemState],
   subscribers: [],
   migrations: [],
 };
