@@ -1,10 +1,9 @@
 import { IsDefined, IsNotEmpty, IsString, IsStrongPassword, MaxLength, MinLength } from "class-validator";
 import { Entity,Column ,PrimaryGeneratedColumn} from "typeorm";
 @Entity()
-
 export class User {
-  @PrimaryGeneratedColumn()
-  id!: number;
+  @PrimaryGeneratedColumn('uuid')
+  id!: string;
   @IsString()
   @IsDefined({groups:['signUp','login']})
   @Column()
@@ -18,3 +17,4 @@ export class User {
   @MaxLength(20) 
   password!: string;
 }
+ 

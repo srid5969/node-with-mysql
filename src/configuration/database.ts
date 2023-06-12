@@ -1,3 +1,6 @@
+import { SystemCountry } from "app/systemCountry/model/systemCountry";
+import { SystemLanguage } from "app/systemLanguage/model/systemLanguage";
+import { SystemState } from "app/systemState/model/systemState";
 import { User } from "app/user/model/user";
 import dotenv from "dotenv";
 import { DataSource } from "typeorm";
@@ -11,12 +14,12 @@ const configuration: any = {
   password: process.env.MSSQL_PASSWORD || "",
   database: process.env.MSSQL_DATABASE || "",
   extra: {
-    trustServerCertificate: true,
+    trustServerCertificate: true, 
   },
 
-  synchronize: true,
+  synchronize: true, 
   logging: true,
-  entities: [User],
+  entities: [User,SystemLanguage,SystemCountry,SystemState],
   subscribers: [],
   migrations: [],
 };

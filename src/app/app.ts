@@ -6,6 +6,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express, { Application } from "express";
 import morgan from "morgan";
+import systemLanguage from "app/systemLanguage/router/systemLanguage";
 
 export const main = async (app: Application): Promise<void> => {
   if (dotenv.config().error) throw Error("Cannot find dot env file");
@@ -23,6 +24,7 @@ export const main = async (app: Application): Promise<void> => {
     console.error("Unable to connect to the database:", error);
   }
   app.use(baseUrl, userRouter);
+  app.use(baseUrl, systemLanguage);
   app.use(middleware);
   app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
