@@ -1,6 +1,7 @@
 import { userRouter } from "app/user/router/user";
 import bodyParser from "body-parser";
 import { middleware } from "common/ErrorHandler/afterMiddleWare";
+import { AppDataSource } from "configuration/database";
 import cors from "cors";
 import dotenv from "dotenv";
 import express, { Application } from "express";
@@ -16,8 +17,7 @@ export const main = async (app: Application): Promise<void> => {
   app.use(morgan("short"));
   const baseUrl: string = process.env.API_PREFIX || "";
   try {
-    // await sequelize.authenticate();
-    // sequelize.define('',{})
+    await AppDataSource.initialize();
     console.log("Connection has been established successfully.");
   } catch (error) {
     console.error("Unable to connect to the database:", error);
