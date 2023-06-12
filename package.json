@@ -20,7 +20,6 @@
     "@types/express": "^4.17.17",
     "@types/morgan": "^1.9.4",
     "@types/mssql": "^8.1.2",
-    "@types/mysql": "^2.15.21",
     "@types/node": "^20.2.6",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.3"
@@ -34,12 +33,8 @@
     "module-alias": "^2.2.3",
     "morgan": "^1.10.0",
     "mssql": "^9.1.1",
-    "mysql": "^2.18.1",
-    "mysql2": "^3.3.3",
     "nodemon": "^2.0.22",
-    "sequelize": "^6.32.0",
-    "typeorm": "^0.3.16",
-    "util": "^0.12.5"
+    "typeorm": "^0.3.16"
   },
   "_moduleAliases": {
     "app": "build/app",
