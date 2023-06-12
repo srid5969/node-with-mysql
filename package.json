@@ -34,7 +34,7 @@
     "morgan": "^1.10.0",
     "mssql": "^9.1.1",
     "nodemon": "^2.0.22",
-    "typeorm": "^0.3.16",
+    "typeorm": "^0.3.16"
   },
   "_moduleAliases": {
     "app": "build/app",
